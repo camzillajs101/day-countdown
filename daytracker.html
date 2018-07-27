@@ -6,23 +6,23 @@
 		<style>
     #days-to-sold {
       position: relative;
-      top: 35vh;
+      top: 30vh;
       font-size: 3em;
     }
     #hours {
-      top: 45vh;
+      top: 40vh;
     }
     #minutes {
-      top: 46vh;
+      top: 41vh;
     }
     #seconds {
-      top: 47vh;
+      top: 42vh;
     }
     #millis {
-      top: 48vh;
+      top: 43vh;
     }
     #any-center {
-      top: 50vh;
+      top: 45vh;
     }
     #hours, #minutes, #seconds, #millis, #any-center {
       position: relative;
@@ -30,7 +30,8 @@
     }
     body {
       background-color: turquoise;
-      font-family: "Helvetica";
+			background: linear-gradient(to right, #00b09b, #96c93d);
+      font-family: Helvetica;
     }
 		</style>
 	</head>
@@ -42,7 +43,7 @@
     <center id="millis"></center>
     <center id="any-center">or <span id="any"></span>
       <select id="any-select">
-        <option selected disabled>Select one...</option>
+        <option selected disabled>Select unit...</option>
         <option value="avclass">Avg. class periods</option>
         <option value="decades">decades</option>
         <option value="jyears">Julian years</option>
