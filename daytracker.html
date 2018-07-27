@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Day tracker or something</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<style>
+    #days-to-sold {
+      position: relative;
+      top: 35vh;
+      font-size: 3em;
+    }
+    #hours {
+      top: 45vh;
+    }
+    #minutes {
+      top: 46vh;
+    }
+    #seconds {
+      top: 47vh;
+    }
+    #millis {
+      top: 48vh;
+    }
+    #any-center {
+      top: 50vh;
+    }
+    #hours, #minutes, #seconds, #millis, #any-center {
+      position: relative;
+      font-size: 1.5em;
+    }
+    body {
+      background-color: turquoise;
+      font-family: "Helvetica";
+    }
+		</style>
+	</head>
+	<body>
+    <center id="days-to-sold"></center>
+    <center id="hours"></center>
+    <center id="minutes"></center>
+    <center id="seconds"></center>
+    <center id="millis"></center>
+    <center id="any-center">or <span id="any"></span>
+      <select id="any-select">
+        <option selected disabled>Select one...</option>
+        <option value="avclass">Avg. class periods</option>
+        <option value="decades">decades</option>
+        <option value="jyears">Julian years</option>
+        <option value="years">years</option>
+        <option value="weeks">weeks</option>
+        <!-- <option value="useconds">microseconds</option>
+        <option value="nseconds">nanoseconds</option>
+        <option value="pseconds">picoseconds</option> -->
+        <option value="ptimes">Planck times</option>
+      </select>
+    </center>
+		<script>
+    let anyVal = "–––";
+
+    function doAgain(){
+      const oneDay = 24 * 60 * 60 * 1000;
+
+      let currentDate = new Date();
+      let soldDate = new Date(2018,08,14,12);
+
+      let diff = soldDate.getTime() - currentDate.getTime();
+      let diffDays =  Math.round(diff / oneDay);
+
+      $('#days-to-sold').html(diffDays+" days left until the Mason Residence is sold!");
+      $('#hours').html("Or "+Math.round(diff / 1000 / 60 / 60)+" hours");
+      $('#minutes').html("or "+Math.round(diff / 1000 / 60)+" minutes");
+      $('#seconds').html("or "+Math.floor(diff / 1000)+" seconds");
+      $('#millis').html("or "+diff+" milliseconds");
+
+      switch($('#any-select').val()){
+        case "decades":
+          anyVal = (diffDays / 365 / 10).toFixed(4);
+        break;
+        case "jyears":
+          anyVal = (diffDays / 365.25).toFixed(4);
+        break;
+        case "years":
+          anyVal = (diffDays / 365).toFixed(4);
+        break;
+        case "weeks":
+          anyVal = (diffDays / 7).toFixed(4);
+        break;
+        case "ptimes":
+          anyVal = diff / (5.39 * Math.pow(10,-44));
+        break;
+        case "avclass":
+          anyVal = Math.round(diff / 1000 / 60 / 50);
+        break;
+        default:
+          anyVal = "–––";
+        break;
+      };
+
+      $('#any').html(anyVal);
+
+      setTimeout(function(){
+        doAgain();
+      },10);
+    };
+    doAgain();
+		</script>
+	</body>
+</html>
