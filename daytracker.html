@@ -58,7 +58,7 @@
 		<script>
     let anyVal = "---";
 
-    function doAgain(){
+    function runAgain(){
       const oneDay = 24 * 60 * 60 * 1000;
 
       let currentDate = new Date();
@@ -67,11 +67,11 @@
       let diff = soldDate.getTime() - currentDate.getTime();
       let diffDays =  Math.round(diff / oneDay);
 
-      $('#days-to-sold').html(diffDays+" days left until the Mason Residence is sold!");
-      $('#hours').html("Or "+Math.round(diff / 1000 / 60 / 60)+" hours");
-      $('#minutes').html("or "+Math.round(diff / 1000 / 60)+" minutes");
-      $('#seconds').html("or "+Math.floor(diff / 1000)+" seconds");
-      $('#millis').html("or "+diff+" milliseconds");
+      $('#days-to-sold').html("Sold! ("+Math.abs(diffDays)+") days since");
+      $('#hours').html("Or "+Math.abs(Math.round(diff / 1000 / 60 / 60))+" hours");
+      $('#minutes').html("or "+Math.abs(Math.round(diff / 1000 / 60))+" minutes");
+      $('#seconds').html("or "+Math.abs(Math.floor(diff / 1000))+" seconds");
+      $('#millis').html("or "+Math.abs(diff)+" milliseconds");
 
       switch($('#any-select').val()){
         case "decades":
@@ -97,13 +97,13 @@
         break;
       };
 
-      $('#any').html(anyVal);
+      $('#any').html(Math.abs(anyVal));
 
       setTimeout(function(){
-        doAgain();
+        runAgain();
       },10);
     };
-    doAgain();
+    runAgain();
 		</script>
 	</body>
 </html>
