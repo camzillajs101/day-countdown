@@ -67,7 +67,7 @@
       let diff = soldDate.getTime() - currentDate.getTime();
       let diffDays =  Math.round(diff / oneDay);
 
-      $('#days-to-sold').html("Sold! ("+Math.abs(diffDays)+") days since");
+      $('#days-to-sold').html("Sold! ("+Math.abs(diffDays)+" days since)");
       $('#hours').html("Or "+Math.abs(Math.round(diff / 1000 / 60 / 60))+" hours");
       $('#minutes').html("or "+Math.abs(Math.round(diff / 1000 / 60))+" minutes");
       $('#seconds').html("or "+Math.abs(Math.floor(diff / 1000))+" seconds");
